@@ -1,7 +1,7 @@
 <section ng-controller="ArticlesController" ng-init="find()">
   <div class="page-header">
     <h1 class="list-heading">Shopping Lists</h1>
-    <button class="add-list"><a ui-sref="articles.create">Add List</a></button>
+    <button class="add-list"<a ui-sref="articles.create">Add List</a></button>
   </div>
   <div class="list-group">
     <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
@@ -25,5 +25,5 @@
     No articles yet, why don't you <a ui-sref="articles.create">create one</a>?
   </div>
 </section>
-<!-- <button class="glyphicon glyphicon-trash" ng-click="remove();" type="submit">Delete</button> -->
-<!-- <button ui-sref="articles.create">Show</button> -->
+
+
