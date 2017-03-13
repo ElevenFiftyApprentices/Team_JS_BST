@@ -35,3 +35,9 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+.create-list-title {
+  display: inline-block;
+}
+.back-to-list {
+  float: right;
+}
