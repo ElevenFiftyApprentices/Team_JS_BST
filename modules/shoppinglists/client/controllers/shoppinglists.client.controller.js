@@ -17,6 +17,8 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.contentList = [];
+    vm.addContent = addContent;
 
     // Remove existing Shoppinglist
     function remove() {
@@ -25,8 +27,16 @@
       }
     }
 
+    // Add content to list array
+    function addContent(isValid) {
+      vm.contentList.push(vm.shoppinglist.content);
+      vm.shoppinglist.content = '';
+    }  
+
     // Save Shoppinglist
     function save(isValid) {
+      vm.shoppinglist.contents = vm.contentList;
+
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.shoppinglistForm');
         return false;
