@@ -1,5 +1,6 @@
 <section>
   <div class="page-header">
+    <button class="back btn btn-default" ui-sref="shoppinglists.list({ shoppinglistId: shoppinglist._id })">Back to lists</button>
     <h1 ng-bind="vm.shoppinglist.name"></h1>
   </div>
   <div class="pull-right"
@@ -12,6 +13,7 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
+  <button class="clear btn btn-default">Clear Selected Items</button>
   <small>
     <em class="text-muted">
       Posted on

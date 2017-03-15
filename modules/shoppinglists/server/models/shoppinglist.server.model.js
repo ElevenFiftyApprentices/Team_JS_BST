@@ -16,6 +16,13 @@ var ShoppinglistSchema = new Schema({
     required: 'Please fill Shoppinglist name',
     trim: true
   },
+
+  color: {
+    type: String,
+    required: 'Please enter a color',
+    trim: true
+  },
+
   created: {
     type: Date,
     default: Date.now
