@@ -23,7 +23,7 @@
      
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">{{vm.grocery._id ? 'Save List' : 'Save List'}}</button>
+          <button type="submit" class="btn btn-primary">{{vm.shoppinglist._id ? 'Save List' : 'Save List'}}</button>
                     
         </div>
         <div ng-show="vm.error" class="text-danger">
@@ -40,7 +40,7 @@
       <fieldset>
         <div class="form-group">  
           <label class="control-label" for="shoppinglistcontent">Item:</label>
-            <input name="content" type="text" ng-model="vm.shoppinglist.content" id="content" class="form-control" placeholder="Enter Item" ng-style="{color: vm.shoppinglist.color}" required>
+            <input name="content" type="text" ng-model="vm.shoppinglist.content" id="content" class="form-control" placeholder="Enter Item" ng-style="{color: vm.shoppinglist.color}">
         </div>
         <div class="form-group">    
               <h3>Priority: </h3>

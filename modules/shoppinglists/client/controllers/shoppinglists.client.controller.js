@@ -29,14 +29,16 @@
 
     // Add content to list array
     function addContent(isValid) {
+      vm.contentList = vm.shoppinglist.contents;
       vm.contentList.push({
         content: vm.shoppinglist.content, 
         priority: vm.shoppinglist.priority,
-        isChecked: false
+        isChecked: vm.shoppinglist.isChecked
       });
 
       vm.shoppinglist.content = '';
       vm.shoppinglist.priority = '';
+      vm.shoppinglist.isChecked = false;
 
     }  
 

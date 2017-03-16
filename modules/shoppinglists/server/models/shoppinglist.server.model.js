@@ -27,8 +27,8 @@ var ShoppinglistSchema = new Schema({
     default: Date.now
   },
   modified: {
-    type: Date,
-    default: Date.now
+    type: Date
+    // default: Date.now
   },
   user: {
     type: Schema.ObjectId,
@@ -41,7 +41,7 @@ var ShoppinglistSchema = new Schema({
   contents: {
     type: [],
     default: [],
-    required: 'Please enter content'
+    // required: 'Please enter content'
   }
   // priority: {
   //   type: String,
@@ -53,6 +53,15 @@ var ShoppinglistSchema = new Schema({
   //   type: Boolean,
   //   default: false
   // }
+});
+
+ShoppinglistSchema.pre('save', function(next){
+  var now = new Date();
+  this.modified = now;
+  if (this.created !== now) {
+    this.created = now;
+  }
+  next();
 });
 
 mongoose.model('Shoppinglist', ShoppinglistSchema);
