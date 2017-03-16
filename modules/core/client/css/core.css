@@ -1,6 +1,64 @@
+.addList {
+  float: right;
+}
+
+.back {
+  float: right;
+}
+
 .content {
   margin-top: 50px;
 }
+
+.clear {
+  float: bottom;
+}
+
+.name {
+  resize: vertical;
+  height: 34px;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid #ccc;
+  margin-left: 0px;
+}
+
+.priority {
+  resize: vertical;
+  height: 34px;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid #ccc;
+  margin-left: 0px;
+  float: right;
+}
+
+.color {
+  resize: vertical;
+  height: 34px;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid #ccc;
+  margin-left: 0px;
+}
+
+.items {
+  resize: vertical;
+  height: 34px;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid #ccc;
+  margin-left: 0px;
+}
+
+.split {
+  resize: horizontal;
+  resize: vertical;
+  height: 1px;
+  background-color: lightgray;
+  opacity: 90%;
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }

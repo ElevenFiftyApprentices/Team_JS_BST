@@ -19,6 +19,7 @@ var ShoppinglistSchema = new Schema({
   color: {
     type: String,
     default: '',
+    required: 'Please enter a color',
     trim: true
   },
   created: {
@@ -33,21 +34,25 @@ var ShoppinglistSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-  content: {
-    type: String,
-    default: ''
-  },
+  // content: {
+  //   type: String,
+  //   default: ''
+  // },
   contents: {
     type: [],
     default: [],
     required: 'Please enter content'
-  },
-  priority: {
-    type: String,
-    default: '',
-    required: 'Please select a priority',
-    trim: true
   }
+  // priority: {
+  //   type: String,
+  //   default: '',
+  //   // required: 'Please select a priority',
+  //   trim: true
+  // },
+  // ischecked: {
+  //   type: Boolean,
+  //   default: false
+  // }
 });
 
 mongoose.model('Shoppinglist', ShoppinglistSchema);

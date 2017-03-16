@@ -29,8 +29,15 @@
 
     // Add content to list array
     function addContent(isValid) {
-      vm.contentList.push(vm.shoppinglist.content);
+      vm.contentList.push({
+        content: vm.shoppinglist.content, 
+        priority: vm.shoppinglist.priority,
+        isChecked: false
+      });
+
       vm.shoppinglist.content = '';
+      vm.shoppinglist.priority = '';
+
     }  
 
     // Save Shoppinglist
@@ -44,6 +51,7 @@
 
       // TODO: move create/update logic to service
       if (vm.shoppinglist._id) {
+         // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
       } else {
         vm.shoppinglist.$save(successCallback, errorCallback);
