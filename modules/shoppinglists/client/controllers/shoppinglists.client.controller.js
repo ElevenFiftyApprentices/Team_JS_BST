@@ -17,6 +17,8 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.contentList = [];
+    vm.addContent = addContent;
 
     // Remove existing Shoppinglist
     function remove() {
@@ -25,8 +27,23 @@
       }
     }
 
+    // Add content to list array
+    function addContent(isValid) {
+      vm.contentList.push({
+        content: vm.shoppinglist.content, 
+        priority: vm.shoppinglist.priority,
+        isChecked: false
+      });
+
+      vm.shoppinglist.content = '';
+      vm.shoppinglist.priority = '';
+
+    }  
+
     // Save Shoppinglist
     function save(isValid) {
+      vm.shoppinglist.contents = vm.contentList;
+
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.shoppinglistForm');
         return false;
@@ -34,6 +51,7 @@
 
       // TODO: move create/update logic to service
       if (vm.shoppinglist._id) {
+         // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
       } else {
         vm.shoppinglist.$save(successCallback, errorCallback);
