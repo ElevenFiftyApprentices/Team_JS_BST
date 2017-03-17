@@ -31,6 +31,7 @@
 
     // Add content to list array
     function addContent(isValid) {
+      vm.contentList = vm.shoppinglist.contents;
       vm.contentList.push({
         content: vm.shoppinglist.content, 
         priority: vm.shoppinglist.priority,
