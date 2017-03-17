@@ -23,5 +23,5 @@ angular.module('articles').run(['Menus',
   //     state: 'articles.create',
   //     roles: ['user']
   //   });
-  // }
+   }
 ]);

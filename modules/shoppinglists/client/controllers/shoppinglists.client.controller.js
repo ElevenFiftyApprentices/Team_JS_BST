@@ -32,6 +32,7 @@
     // Add content to list array
     function addContent(isValid) {
       vm.contentList = vm.shoppinglist.contents;
+
       vm.contentList.push({
         content: vm.shoppinglist.content, 
         priority: vm.shoppinglist.priority,
@@ -41,6 +42,27 @@
       vm.shoppinglist.content = '';
       vm.shoppinglist.priority = '';
       vm.shoppinglist.isChecked = false;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.shoppinglistcontentForm');
+        return false;
+      }
+
+      // TODO: move create/update logic to service
+      if (vm.shoppinglist._id) {
+         // vm.shoppinglist.contents = vm.contentList;
+        vm.shoppinglist.$update(successCallback, errorCallback);
+      }
+
+      function successCallback(res) {
+        $state.go('shoppinglists.view', {
+          shoppinglistId: res._id
+        });
+      }
+
+      function errorCallback(res) {
+        vm.error = res.data.message;
+      }
 
     }
 
@@ -69,12 +91,15 @@
       for(var i=(vm.shoppinglist.contents.length -1); i > -1; i--) {
         if(vm.shoppinglist.contents[i].isChecked) {
           vm.shoppinglist.contents.splice(i, 1); 
+           vm.shoppinglist.contents = vm.contentList;
         }
-        vm.shoppinglist.contents = vm.contentList;
+       
+      }  
+        // vm.shoppinglist.contents = vm.contentList;
         if (vm.shoppinglist._id) {
          // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
-      }
+        }
       function successCallback(res) {
         $state.go('shoppinglists.view', {
           shoppinglistId: res._id
@@ -85,11 +110,11 @@
         vm.error = res.data.message;
       }
     }
-    }  
+      
 
     // Save Shoppinglist
     function save(isValid) {
-      vm.shoppinglist.contents = vm.contentList;
+      // vm.shoppinglist.contents = vm.contentList;
 
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.shoppinglistForm');
