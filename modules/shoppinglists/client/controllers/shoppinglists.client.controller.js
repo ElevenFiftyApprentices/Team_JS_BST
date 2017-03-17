@@ -44,15 +44,14 @@
     }
 
     function deleteContent(index) {
-      vm.shoppinglist.contents.splice(index, 1);
-      vm.shoppinglist.contents.$update(successCallback, errorCallback);
+      vm.shoppinglist.contents.splice(index, 1);       
     }
 
     function deleteSelectedContent() {
+      vm.shoppinglist.contents = vm.contentList;
       for(var i=(vm.shoppinglist.contents.length -1); i > -1; i--) {
         if(vm.shoppinglist.contents[i].isChecked) {
           vm.shoppinglist.contents.splice(i, 1); 
-          vm.shoppinglist.contents.$update(successCallback, errorCallback);
         }
       }
     }  
