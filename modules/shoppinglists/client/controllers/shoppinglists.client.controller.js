@@ -19,6 +19,8 @@
     vm.save = save;
     vm.contentList = [];
     vm.addContent = addContent;
+    vm.deleteSelectedContent = deleteSelectedContent;
+    vm.deleteContent = deleteContent;
 
     // Remove existing Shoppinglist
     function remove() {
@@ -40,6 +42,49 @@
       vm.shoppinglist.priority = '';
       vm.shoppinglist.isChecked = false;
 
+    }
+
+    function deleteContent(index) {
+      vm.contentList = vm.shoppinglist.contents;
+      vm.shoppinglist.contents.splice(index, 1);
+      vm.shoppinglist.contents = vm.contentList;       
+      if (vm.shoppinglist._id) {
+         // vm.shoppinglist.contents = vm.contentList;
+        vm.shoppinglist.$update(successCallback, errorCallback);
+      }
+      function successCallback(res) {
+        $state.go('shoppinglists.view', {
+          shoppinglistId: res._id
+        });
+      }
+
+      function errorCallback(res) {
+        vm.error = res.data.message;
+      }
+    }
+
+
+    function deleteSelectedContent() {
+      vm.contentList = vm.shoppinglist.contents;
+      for(var i=(vm.shoppinglist.contents.length -1); i > -1; i--) {
+        if(vm.shoppinglist.contents[i].isChecked) {
+          vm.shoppinglist.contents.splice(i, 1); 
+        }
+        vm.shoppinglist.contents = vm.contentList;
+        if (vm.shoppinglist._id) {
+         // vm.shoppinglist.contents = vm.contentList;
+        vm.shoppinglist.$update(successCallback, errorCallback);
+      }
+      function successCallback(res) {
+        $state.go('shoppinglists.view', {
+          shoppinglistId: res._id
+        });
+      }
+
+      function errorCallback(res) {
+        vm.error = res.data.message;
+      }
+    }
     }  
 
     // Save Shoppinglist
