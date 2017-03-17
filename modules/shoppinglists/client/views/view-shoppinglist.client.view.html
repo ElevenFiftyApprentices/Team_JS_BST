@@ -14,16 +14,7 @@
     </small>
   </div>
 
-  <div class="pull-right">
-    
-    <a class="btn btn-primary"
-       ui-sref="shoppinglists.edit({ shoppinglistId: vm.shoppinglist._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
+ 
 
 <div class="col-md-6">
     <form  name="vm.form.shoppinglistcontentForm" ng-submit="vm.addContent(vm.form.shoppinglistcontentForm.$valid)" class="form-horizontal"  novalidate>
@@ -80,7 +71,7 @@
         <td>
           <input type="checkbox" class="checkbox" ng-model="content.isChecked" />
           <span ng-class="{checked: content.isChecked}">{{ content.content }}
-          <button class="delete-button" ng-click="vm.deleteContent(i)" class="delete-icon">[X]</button>
+          <button class="delete-button" ng-click="vm.deleteContent(content)" class="delete-icon">[X]</button>
         </td>
         <td>{{ content.priority }}</td>
       </tr>  
@@ -93,6 +84,17 @@
         {{content}}  {{priority}}
       </li> 
     </ul>   -->
+  </div>
+
+   <div class="pull-right">
+    
+    <a class="btn btn-primary"
+       ui-sref="shoppinglists.edit({ shoppinglistId: vm.shoppinglist._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
   </div>
 
   <!-- <div class="pull-right"

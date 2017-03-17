@@ -66,9 +66,10 @@
 
     }
 
-    function deleteContent(index) {
+    function deleteContent(content) {
       vm.contentList = vm.shoppinglist.contents;
-      vm.shoppinglist.contents.splice(index, 1);
+      var contenttodelete = vm.contentList.indexOf(content);
+      vm.shoppinglist.contents.splice(contenttodelete, 1);
       vm.shoppinglist.contents = vm.contentList;       
       if (vm.shoppinglist._id) {
          // vm.shoppinglist.contents = vm.contentList;
