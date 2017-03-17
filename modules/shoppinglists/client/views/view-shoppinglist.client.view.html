@@ -4,18 +4,22 @@
     <h1 ng-bind="vm.shoppinglist.name" ng-style="{color: vm.shoppinglist.color}"></h1>
   </div>
   <div class="pull-left">
-    <table class="table table-bordered">
+    <table class="table table-bordered" >
       <tr>
         <th>Contents</th>
         <th>Priority</th>
       </tr>
       <tr ng-repeat="content in vm.shoppinglist.contents" ng-style="{color: vm.shoppinglist.color}">
-        <td>{{ content.content }}</td>
+        <td>
+          <input type="checkbox" class="checkbox" ng-model="content.isChecked" />
+          <span ng-class="{checked: content.isChecked}">{{ content.content }}
+          <button class="delete-button" ng-click="vm.deleteContent(i)" class="delete-icon">[X]</button>
+        </td>
         <td>{{ content.priority }}</td>
       </tr>  
     </table>
 
-    <button class="clear btn btn-default">Clear Selected Items</button>
+    <button ng-click="vm.deleteSelectedContent()" class="btn btn-default">Clear Selected Items</button>
    <!--  <ul >
       <li ng-repeat="content in vm.shoppinglist.contents" >
         {{content}}  {{priority}}
@@ -45,4 +49,28 @@
     </em>
   </small>
   <p class="lead" ng-bind="vm.shoppinglist.content"></p>
+
+<!-- Checkbox for content -->
+
+<!--   <div class="content">
+
+      <ul>
+      <li ng-repeat="content in vm.shoppinglist.contents">
+        <input type="checkbox" class="checkbox" ng-model="vm.shoppinglist.content.isChecked" />
+      <span ng-class="{'checked': vm.shoppinglist.content.isChecked}">{{ content.content }}
+      <span ng-click="deleteContent(i)" class="delete-icon">[X]
+        </li>
+        </ul>
+
+        <div class="mtop20">
+      <button ng-click="deleteSelectedContent()">Delete Selected
+      </div>
+
+  </div> -->
+
 </section>
+
+
+
+
+

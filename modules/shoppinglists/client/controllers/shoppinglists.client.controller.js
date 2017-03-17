@@ -19,6 +19,8 @@
     vm.save = save;
     vm.contentList = [];
     vm.addContent = addContent;
+    vm.deleteSelectedContent = deleteSelectedContent;
+    vm.deleteContent = deleteContent;
 
     // Remove existing Shoppinglist
     function remove() {
@@ -32,12 +34,27 @@
       vm.contentList.push({
         content: vm.shoppinglist.content, 
         priority: vm.shoppinglist.priority,
-        isChecked: false
+        isChecked: vm.shoppinglist.isChecked
       });
 
       vm.shoppinglist.content = '';
       vm.shoppinglist.priority = '';
+      vm.shoppinglist.isChecked = false;
 
+    }
+
+    function deleteContent(index) {
+      vm.shoppinglist.contents.splice(index, 1);
+      vm.shoppinglist.contents.$update(successCallback, errorCallback);
+    }
+
+    function deleteSelectedContent() {
+      for(var i=(vm.shoppinglist.contents.length -1); i > -1; i--) {
+        if(vm.shoppinglist.contents[i].isChecked) {
+          vm.shoppinglist.contents.splice(i, 1); 
+          vm.shoppinglist.contents.$update(successCallback, errorCallback);
+        }
+      }
     }  
 
     // Save Shoppinglist
