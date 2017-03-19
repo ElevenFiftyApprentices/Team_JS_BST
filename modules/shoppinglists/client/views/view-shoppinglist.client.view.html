@@ -16,7 +16,7 @@
 
  
 
-<div class="col-md-6">
+<div class="col-md-12">
     <form  name="vm.form.shoppinglistcontentForm" ng-submit="vm.addContent(vm.form.shoppinglistcontentForm.$valid)" class="form-horizontal"  novalidate>
       
       <fieldset>
@@ -32,10 +32,14 @@
             <option>Need it soon</option>
             <option>Grab it now!</option>
           </select>
-      </div>   
-          <div class="form-group"> 
+        </div>   
+        <div class="form-group">
+          <label class="control-label" for="notes">Notes:</label>
+          <textarea ng-model="vm.shoppinglist.notes" class="form-control" id="notes" rows="10" ng-style="{color: vm.shoppinglist.color}"></textarea>
+        </div>
+        <div class="form-group"> 
             <button type="submit" class="btn btn-primary">Add Item</button>
-          </div>  
+        </div>  
           
         </fieldset>  
       </form>    
@@ -62,18 +66,27 @@
       </div> -->
 
   <div class="pull-left">
-    <table class="table table-bordered" >
+    <table class="table table-bordered table-hover" >
       <tr>
-        <th>Contents</th>
-        <th>Priority</th>
+        <th></th>
+        <th>Items <button ng-click="order = 'content'">Order by Item</button></th>
+        <th>Priority <button ng-click="order = 'priority'">Order by Priority</button></th>
+        <th>Notes</th>
+        <th>Options</th>
       </tr>
-      <tr ng-repeat="content in vm.shoppinglist.contents" ng-style="{color: vm.shoppinglist.color}">
+      <tr ng-repeat="content in vm.shoppinglist.contents | orderBy: order" ng-style="{color: vm.shoppinglist.color}">
         <td>
           <input type="checkbox" class="checkbox" ng-model="content.isChecked" />
-          <span ng-class="{checked: content.isChecked}">{{ content.content }}
-          <button class="delete-button" ng-click="vm.deleteContent(content)" class="delete-icon">[X]</button>
+        </td>
+        <td>  
+          <span ng-class="{checked: content.isChecked}">{{ content.content }} </span>
         </td>
         <td>{{ content.priority }}</td>
+        <td>{{ content.notes }}</td>  
+        <td>
+          <button class="delete-button" ng-click="vm.deleteContent(content)" class="delete-icon">[X]</button>
+        </td>
+        
       </tr>  
     </table>
 
@@ -97,16 +110,7 @@
     </a>
   </div>
 
-  <!-- <div class="pull-right"
-       ng-show="vm.shoppinglist.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       ui-sref="shoppinglists.edit({ shoppinglistId: vm.shoppinglist._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div> -->
+ 
   
   <!-- <small>
     <em class="text-muted">

@@ -36,11 +36,13 @@
       vm.contentList.push({
         content: vm.shoppinglist.content, 
         priority: vm.shoppinglist.priority,
+        notes: vm.shoppinglist.notes,
         isChecked: vm.shoppinglist.isChecked
       });
 
       vm.shoppinglist.content = '';
       vm.shoppinglist.priority = '';
+      vm.shoppinglist.notes = '';
       vm.shoppinglist.isChecked = false;
 
       if (!isValid) {
