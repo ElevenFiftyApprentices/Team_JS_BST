@@ -6,14 +6,14 @@
       <form name="vm.form.shoppinglistForm" class="form-horizontal" ng-submit="vm.save(vm.form.shoppinglistForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.shoppinglist.name" id="name" class="form-control" placeholder="Name" ng-style="{color: vm.shoppinglist.color}" required>
+          <label class="control-label" for="name">Name:</label>
+          <input name="name" type="text" ng-model="vm.shoppinglist.name" id="name" class="form-control" placeholder="Enter Name" ng-style="{color: vm.shoppinglist.color}" required>
           <div ng-messages="vm.form.shoppinglistForm.name.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Shoppinglist name is required.</p>
           </div>
         </div>
       <div class="form-group col-md-3" style="margin-right:30px">
-             <label class="control-label" for="color-picker">Color</label>
+             <label class="control-label" for="color-picker">Color:</label>
              <input type="color" name="color-picker" ng-model="vm.shoppinglist.color" class="form-control" />
            </div>
            <div class="form-group col-md-3 col-md-offset-1">
@@ -34,8 +34,8 @@
   </div>
 
 
-  <div class="col-md-6">
-    <form  class="form-horizontal"  novalidate>
+  <!-- <div class="col-md-6">
+    <form  name="vm.form.shoppinglistcontentForm" ng-submit="vm.addContent(vm.form.shoppinglistcontentForm.$valid)" class="form-horizontal"  novalidate>
       
       <fieldset>
         <div class="form-group">  
@@ -52,7 +52,7 @@
           </select>
       </div>   
           <div class="form-group"> 
-            <button ng-click="vm.addContent()" class="btn btn-primary">Add Item</button>
+            <button type="submit" class="btn btn-primary">Add Item</button>
           </div>  
           
         </fieldset>  
@@ -71,19 +71,14 @@
                  
                 </li> 
               </ul>
-              <!-- <table>
-                <tr ng-repeat="content in vm.contentList">
-                  <td>{{content}}</td>
-                  <td>{{priority}}</td>
-                </tr>  
-              </table> -->
+             
         
             </div>
       
           </div>  
     
       </div>
-
+ -->
   
 </section>
 
