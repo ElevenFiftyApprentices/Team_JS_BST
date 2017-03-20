@@ -52,7 +52,6 @@
 
       // TODO: move create/update logic to service
       if (vm.shoppinglist._id) {
-         // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
       }
 
@@ -67,14 +66,14 @@
       }
 
     }
-
+     
+    // Delete Single Item 
     function deleteContent(content) {
       vm.contentList = vm.shoppinglist.contents;
       var contenttodelete = vm.contentList.indexOf(content);
       vm.shoppinglist.contents.splice(contenttodelete, 1);
       vm.shoppinglist.contents = vm.contentList;       
       if (vm.shoppinglist._id) {
-         // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
       }
       function successCallback(res) {
@@ -88,7 +87,7 @@
       }
     }
 
-
+    // Delete Selected items
     function deleteSelectedContent() {
       vm.contentList = vm.shoppinglist.contents;
       for(var i=(vm.shoppinglist.contents.length -1); i > -1; i--) {
@@ -98,9 +97,7 @@
         }
        
       }  
-        // vm.shoppinglist.contents = vm.contentList;
         if (vm.shoppinglist._id) {
-         // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
         }
       function successCallback(res) {
@@ -117,8 +114,6 @@
 
     // Save Shoppinglist
     function save(isValid) {
-      // vm.shoppinglist.contents = vm.contentList;
-
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.shoppinglistForm');
         return false;
@@ -126,7 +121,6 @@
 
       // TODO: move create/update logic to service
       if (vm.shoppinglist._id) {
-         // vm.shoppinglist.contents = vm.contentList;
         vm.shoppinglist.$update(successCallback, errorCallback);
       } else {
         vm.shoppinglist.$save(successCallback, errorCallback);

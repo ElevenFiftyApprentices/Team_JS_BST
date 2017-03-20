@@ -1,4 +1,6 @@
 <section>
+
+
   <div class="page-header">
     <button class="back btn btn-default" ui-sref="shoppinglists.list({ shoppinglistId: shoppinglist._id })">Back to lists</button>
     <h1 ng-bind="vm.shoppinglist.name" ng-style="{color: vm.shoppinglist.color}"></h1>
@@ -15,7 +17,7 @@
   </div>
 
  
-
+<!--Add Item to list w/ priority-->
 <div class="col-md-12">
     <form  name="vm.form.shoppinglistcontentForm" ng-submit="vm.addContent(vm.form.shoppinglistcontentForm.$valid)" class="form-horizontal"  novalidate>
       
@@ -45,26 +47,7 @@
       </form>    
     </div>
 
-     <!-- <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><strong>Shopping List:</strong></div>
-            <div class="panel-body">
-              <ul>
-                <li ng-repeat="content in vm.contentList" ng-style="{color: vm.shoppinglist.color}">
-           
-                  {{content.content}} : {{content.priority}}
-                  
-                 
-                </li> 
-              </ul>
-              
-        
-            </div>
-      
-          </div>  
-    
-      </div> -->
-
+<!--List of Items and sorting options-->
   <div class="pull-left">
     <table class="table table-bordered table-hover" >
       <tr>
@@ -92,11 +75,6 @@
 
     <button ng-click="vm.deleteSelectedContent()" class="btn btn-default">Clear Selected Items</button>
   
-   <!--  <ul >
-      <li ng-repeat="content in vm.shoppinglist.contents" >
-        {{content}}  {{priority}}
-      </li> 
-    </ul>   -->
   </div>
 
    <div class="pull-right">
@@ -109,39 +87,6 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-
- 
-  
-  <!-- <small>
-    <em class="text-muted">
-      Created on
-      <span ng-bind="vm.shoppinglist.created | date:'MMM d, y h:mm:ss a'"></span>
-      by
-      <span ng-if="vm.shoppinglist.user"
-            ng-bind="vm.shoppinglist.user.displayName"></span>
-
-      <span ng-if="!vm.shoppinglist.user">Deleted User</span>
-    </em>
-  </small> -->
-<!--   <p class="lead" ng-bind="vm.shoppinglist.content"></p> -->
-
-<!-- Checkbox for content -->
-
-<!--   <div class="content">
-
-      <ul>
-      <li ng-repeat="content in vm.shoppinglist.contents">
-        <input type="checkbox" class="checkbox" ng-model="vm.shoppinglist.content.isChecked" />
-      <span ng-class="{'checked': vm.shoppinglist.content.isChecked}">{{ content.content }}
-      <span ng-click="deleteContent(i)" class="delete-icon">[X]
-        </li>
-        </ul>
-
-        <div class="mtop20">
-      <button ng-click="deleteSelectedContent()">Delete Selected
-      </div>
-
-  </div> -->
 
 </section>
 
