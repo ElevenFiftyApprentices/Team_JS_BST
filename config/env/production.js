@@ -8,7 +8,7 @@ module.exports = {
   },
   port: process.env.PORT || 8443,
   db: {
-    uri: 'mongodb://shoppinglist:Shoppinglist123@ds137090.mlab.com:37090/bjt',
+    uri: 'mongodb://user:password@ds137090.mlab.com:37090/bjt',
     options: {
       user: '',
       pass: ''
