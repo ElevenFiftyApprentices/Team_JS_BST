@@ -3,7 +3,7 @@
     <button class="back btn btn-default" ui-sref="shoppinglists.list({ shoppinglistId: shoppinglist._id })">Back to lists</button>
     <h1 ng-bind="vm.shoppinglist.name" ng-style="{color: vm.shoppinglist.color}"></h1>
     <small>
-    <em class="text-muted">
+    <em class="emfont text-muted">
       Modified on 
       <span ng-bind="vm.shoppinglist.modified | date:'MMM d, y h:mm:ss a'"></span>
       by
@@ -25,9 +25,10 @@
             <input name="content" type="text" ng-model="vm.shoppinglist.content" id="content" class="form-control" placeholder="Enter Item" ng-style="{color: vm.shoppinglist.color}" required>
         </div>
         <div class="form-group">    
-              <h3>Priority: </h3>
+          <h3 class="priorityh3">Priority: </h3>
           <select ng-model="vm.shoppinglist.priority" class="form-control" id="priority" ng-style="{color: vm.shoppinglist.color}">
-            <option value="" disabled selected>Select a priority</option>
+
+            <option class="priorityinputfont" value="" disabled selected><i><b>Select a priority</i></b></option>
             <option>It can wait</option>
             <option>Need it soon</option>
             <option>Grab it now!</option>
@@ -68,13 +69,13 @@
   <div class="pull-left">
     <table class="table table-bordered table-hover" >
       <tr>
-        <th></th>
-        <th>Items <button ng-click="order = 'content'">Order by Item</button></th>
-        <th>Priority <button ng-click="order = 'priority'">Order by Priority</button></th>
-        <th>Notes</th>
-        <th>Options</th>
+        <th class="thcontent"></th>
+        <th class="thitems">Items <button class="btn btn-primary" ng-click="order = 'content'">Order by Item</button></th>
+        <th class="thpriority">Priority <button class="btn btn-primary" ng-click="order = 'priority'">Order by Priority</button></th>
+        <th class="thnotes">Notes</th>
+        <th class="thoptions">Options</th>
       </tr>
-      <tr ng-repeat="content in vm.shoppinglist.contents | orderBy: order" ng-style="{color: vm.shoppinglist.color}">
+      <tr class="trcolor" ng-repeat="content in vm.shoppinglist.contents | orderBy: order" ng-style="{color: vm.shoppinglist.color}">
         <td>
           <input type="checkbox" class="checkbox" ng-model="content.isChecked" />
         </td>
@@ -84,7 +85,7 @@
         <td>{{ content.priority }}</td>
         <td>{{ content.notes }}</td>  
         <td>
-          <button class="delete-button" ng-click="vm.deleteContent(content)" class="delete-icon">[X]</button>
+          <button class="deleteicon delete-button" ng-click="vm.deleteContent(content)" class="delete-icon"><img src="http://www.freeiconspng.com/uploads/remove-icon-png-24.png" height="30px" width="30px"></button>
         </td>
         
       </tr>  
